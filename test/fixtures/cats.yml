@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dob: 2016-12-07
+  gender: MyString
+  favorite_toy: MyString
+  breed: MyString
+  photo: MyString
+  name: MyString
+  evil_index: 1.5
+  user: one
+
+two:
+  dob: 2016-12-07
+  gender: MyString
+  favorite_toy: MyString
+  breed: MyString
+  photo: MyString
+  name: MyString
+  evil_index: 1.5
+  user: two
