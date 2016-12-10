@@ -38,7 +38,7 @@ users = User.create!([{
 
 }])
 
-skills = Skill.create([{
+skills = Skill.create!([{
   name:"cinematography"
 },{name:"videography"},{name:"acting"},{name:"DOP"},{name:"assisting"},{name:"make up artist"},{name:"best boy"},{name:"video assist"},{name:"editing"},{name:"fx"},{name:"retouching"},{name:"illustration"},{name:"graphic design"},
 {name:"animation"},{name:"scenography"},{name:"costume design"},{name:"sound design"},{name:"scouting"},{name:"score composition"},{name:"lighting"},{name:"casting" },{name:"art direction" }])
@@ -80,12 +80,14 @@ Mubee.create!([{
   accepted: true,
   location: "London",
   brief: "HD panoramic shot of London from Tower Bridge, duration 00:00:50",
-  budget: 200
+  budget: 200,
+  contract: contracts[1]
 },{
   crew: users[0],
   producer: users[1],
   accepted: true,
   location: "Iceland",
   brief: "heli/drone shot of Reykjavik, duration 00:02:00",
-  budget: 500
+  budget: 500,
+  contract: contracts[0]
 }])

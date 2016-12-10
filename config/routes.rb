@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :mubees
   scope :api do
     resources :users, except: [:create]
-    resources :cats
+    resources :mubees
 
     post 'register', to: 'auth#register'
     post 'login', to: 'auth#login'

@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20161209101301) do
   create_table "skills_users", id: false, force: :cascade do |t|
     t.integer "skill_id", null: false
     t.integer "user_id",  null: false
+    t.index ["skill_id", "user_id"], name: "index_skills_users_on_skill_id_and_user_id", using: :btree
+    t.index ["user_id", "skill_id"], name: "index_skills_users_on_user_id_and_skill_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
