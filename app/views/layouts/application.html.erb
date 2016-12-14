@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mubee</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <header>
+  <nav>
+    <ul>
+      <li><%= link_to "Mubees", mubees_path %></li>
+      <li><%= link_to "Create Mubees", new_mubee_path %></li>
+    </ul>
+  </nav>
+</header>
+
+  <body>
+
+    <%= yield %>
+  </body>
+</html>

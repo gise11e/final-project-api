@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  rating: 1.5
+  crew_id: 1
+  producer_id: 1
+  mubee: one
+
+two:
+  body: MyText
+  rating: 1.5
+  crew_id: 1
+  producer_id: 1
+  mubee: two

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209101301) do
+ActiveRecord::Schema.define(version: 20161213220132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20161209101301) do
     t.integer  "crew_id"
     t.integer  "producer_id"
     t.integer  "contract_id"
-    t.boolean  "accepted"
     t.string   "location"
     t.float    "lat"
     t.float    "lng"
@@ -32,7 +31,21 @@ ActiveRecord::Schema.define(version: 20161209101301) do
     t.integer  "budget"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "title"
+    t.date     "deadline"
+    t.boolean  "accepted"
     t.index ["contract_id"], name: "index_mubees_on_contract_id", using: :btree
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "body"
+    t.float    "rating"
+    t.integer  "sender"
+    t.integer  "recipient"
+    t.integer  "mubee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mubee_id"], name: "index_reviews_on_mubee_id", using: :btree
   end
 
   create_table "skills", force: :cascade do |t|
@@ -58,12 +71,15 @@ ActiveRecord::Schema.define(version: 20161209101301) do
     t.string   "twitter"
     t.string   "instagram"
     t.string   "location"
-    t.float    "lat"
-    t.float    "lng"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "website"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "full_name"
+    t.boolean  "crew"
   end
 
   add_foreign_key "mubees", "contracts"
+  add_foreign_key "reviews", "mubees"
 end

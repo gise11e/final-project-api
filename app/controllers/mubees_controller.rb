@@ -10,12 +10,15 @@ class MubeesController < ApplicationController
 
   # GET /mubees/1
   def show
+    @mubee.set_current_user(current_user)
     render json: @mubee
   end
 
   # POST /mubees
   def create
     @mubee = Mubee.new(mubee_params)
+    @mubee.producer = current_user
+    @mubee.set_current_user(current_user)
 
     if @mubee.save
       render json: @mubee, status: :created, location: @mubee
@@ -46,6 +49,6 @@ class MubeesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mubee_params
-      params.require(:mubee).permit(:crew_id, :producer_id, :accepted, :location, :budget)
+      params.require(:mubee).permit(:crew_id, :producer_id, :accepted, :location, :brief, :budget, :contract_id, :title, :deadline)
     end
 end

@@ -4,7 +4,23 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    p params
+    if params[:skill_ids]
+
+      if params[:latitude] && params[:longitude]
+        # cast params to float as box center point.
+        center_point = [Float(params[:latitude]), Float(params[:longitude])]
+        # calculate bounding box for query.
+        distance = 20
+        box = Geocoder::Calculations.bounding_box(center_point, distance)
+        @users = User.includes(:skills).where(skills: { id: params[:skill_ids] }, crew: true).within_bounding_box(box)
+      else
+        @users = User.includes(:skills).where(skills: { id: params[:skill_ids] }, crew: true)
+      end
+
+    else
+      @users = User.where(crew: true)
+    end
 
     render json: @users
   end
@@ -34,11 +50,13 @@ class UsersController < ApplicationController
       else
         render json: @user.errors, status: :unprocessable_entity
       end
-      
+
     else
       render json: { errors: ["Unauthorized"] }, status: 401
     end
+
   end
+
 
   # DELETE /users/1
   def destroy
@@ -57,6 +75,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:username, :email, :password_digest)
+      params.permit(:username, :email, :password_digest, :location, :image, :full_name, :website, :crew, skill_ids:[])
     end
 end

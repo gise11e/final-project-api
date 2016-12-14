@@ -1,50 +1,93 @@
-["users"].each do |table_name|
+["users","skills","mubees","skills_users","contracts"].each do |table_name|
   ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY CASCADE")
 end
 
+Skill.create!([{
+  name:"cinematography"
+},{
+  name:"videography"
+},{
+  name:"acting"
+},{
+  name:"DOP"
+},{
+  name:"assisting"
+},{
+  name:"make up artist"
+},{
+  name:"best boy"
+},{
+  name:"video assist"
+},{
+  name:"editing"
+},{
+  name:"fx"
+},{
+  name:"retouching"
+},{
+  name:"illustration"
+},{
+  name:"graphic design"
+},{
+  name:"animation"
+},{
+  name:"scenography"
+},{
+  name:"costume design"
+},{
+  name:"sound design"
+},{
+  name:"scouting"
+},{
+  name:"score composition"
+},{
+  name:"lighting"
+},{
+  name:"casting"
+},{
+  name:"art direction"
+}])
+
 users = User.create!([{
+  full_name: "mike",
   username: "mickyginger",
   email: "mike.hayden@ga.co",
   password: "password",
   password_confirmation: "password",
-  role: "Crew",
+  crew: true,
   image: "",
- instagram: "@mickyg",
+  instagram: "@mickyg",
   location: "london",
-  website: "mickyginger.com"
-},
-{
+  website: "mickyginger.com",
+  skill_ids: [1,2,3]
+},{
+  full_name: "lilly",
   username: "lilly",
   email: "lilly@rose.com",
   password: "password",
   password_confirmation: "password",
-  role: "Producer | Crew",
+  crew: true,
   image: "",
  instagram: "@lillyrose",
   location: "nyc",
-  website: "lillyrose.com"
-},
-
-{
+  website: "lillyrose.com",
+  skill_ids: [2,3,4]
+},{
+  full_name: "gi",
   username: "gise11e",
   email: "gi@gi.com",
   password: "password",
   password_confirmation: "password",
-  role: "Producer",
+  crew: false,
   image: "",
  instagram: "@gilirilili",
   location: "london",
-  website: "gi-a.xyz"
-
+  website: "gi-a.xyz",
+  skill_ids: [3,4,5]
 }])
 
-skills = Skill.create!([{
-  name:"cinematography"
-},{name:"videography"},{name:"acting"},{name:"DOP"},{name:"assisting"},{name:"make up artist"},{name:"best boy"},{name:"video assist"},{name:"editing"},{name:"fx"},{name:"retouching"},{name:"illustration"},{name:"graphic design"},
-{name:"animation"},{name:"scenography"},{name:"costume design"},{name:"sound design"},{name:"scouting"},{name:"score composition"},{name:"lighting"},{name:"casting" },{name:"art direction" }])
 
-
-contracts = Contract.create([{
+contracts = Contract.create!([{
 
 title: "Actors Release Form",
 content: "
@@ -75,6 +118,8 @@ Producer may use and authorize others to use all or parts of the Recordings.  Pr
 ])
 
 Mubee.create!([{
+  title: "London from Tower Bridge panoramic",
+  deadline: "2017-01-08",
   crew: users[0],
   producer: users[1],
   accepted: true,
@@ -82,7 +127,11 @@ Mubee.create!([{
   brief: "HD panoramic shot of London from Tower Bridge, duration 00:00:50",
   budget: 200,
   contract: contracts[1]
+  # lat: ,
+  # long:
 },{
+  title: "Heli Shot",
+  deadline: "2017-05-11",
   crew: users[0],
   producer: users[1],
   accepted: true,
@@ -90,4 +139,6 @@ Mubee.create!([{
   brief: "heli/drone shot of Reykjavik, duration 00:02:00",
   budget: 500,
   contract: contracts[0]
+  # lat: ,
+  # long:
 }])
