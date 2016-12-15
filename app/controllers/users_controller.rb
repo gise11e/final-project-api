@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    p params
     if params[:skill_ids]
 
       if params[:latitude] && params[:longitude]
@@ -17,6 +16,9 @@ class UsersController < ApplicationController
       else
         @users = User.includes(:skills).where(skills: { id: params[:skill_ids] }, crew: true)
       end
+    # else
+    #   @users = User.includes(:reviews).where (received_reviews: { id: params [:received_reviews]}, crew: true)
+    # end
 
     else
       @users = User.where(crew: true)
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
   def update
     if @user == current_user
 
-      if @user.update(user_params)
+      if @user.update(Uploader.upload(user_params))
         render json: @user
       else
         render json: @user.errors, status: :unprocessable_entity
@@ -75,6 +77,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.permit(:username, :email, :password_digest, :location, :image, :full_name, :website, :crew, skill_ids:[])
+      params.permit(:username, :email, :password_digest, :location, :image, :full_name, :website, :crew, :base64, skill_ids:[])
     end
 end

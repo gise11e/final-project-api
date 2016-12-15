@@ -7,6 +7,10 @@ Skill.create!([{
 },{
   name:"videography"
 },{
+ name:"directing"
+},{
+ name:"producing"
+},{
   name:"acting"
 },{
   name:"DOP"
@@ -49,20 +53,20 @@ Skill.create!([{
 }])
 
 users = User.create!([{
-  full_name: "mike",
-  username: "mickyginger",
-  email: "mike.hayden@ga.co",
+  full_name: "Francis Forcope",
+  username: "francisforcope",
+  email: "franco@films.com",
   password: "password",
   password_confirmation: "password",
   crew: true,
   image: "",
-  instagram: "@mickyg",
-  location: "london",
-  website: "mickyginger.com",
+  instagram: "@franfilms",
+  location: "NYC",
+  website: "francofilms.com",
   skill_ids: [1,2,3]
 },{
   full_name: "lilly",
-  username: "lilly",
+  username: "lillyrose",
   email: "lilly@rose.com",
   password: "password",
   password_confirmation: "password",
@@ -73,16 +77,94 @@ users = User.create!([{
   website: "lillyrose.com",
   skill_ids: [2,3,4]
 },{
-  full_name: "gi",
-  username: "gise11e",
-  email: "gi@gi.com",
+  full_name: "Molly Mae",
+  username: "mollymae",
+  email: "molly@maefilms.com",
+  password: "password",
+  password_confirmation: "password",
+  crew: true,
+  image: "",
+ instagram: "@mollymae",
+  location: "nyc",
+  website: "mollymae.com",
+  skill_ids: [10,12,18]
+},
+{
+  full_name: "Quentin Von Trier",
+  username: "quentino",
+  email: "quentino@films.com",
+  password: "password",
+  password_confirmation: "password",
+  crew: true,
+  image: "",
+ instagram: "@quentino",
+  location: "nyc",
+  website: "quentino.com",
+  skill_ids: [1,6,8]
+},
+{
+  full_name: "Lars Bay",
+  username: "laray",
+  email: "laray@films.com",
+  password: "password",
+  password_confirmation: "password",
+  crew: true,
+  image: "",
+ instagram: "@laray",
+  location: "nyc",
+  website: "larayfilms.com",
+  skill_ids: [15,1,17]
+},
+{
+  full_name: "Layla Corrs",
+  username: "layla",
+  email: "layla@films.com",
+  password: "password",
+  password_confirmation: "password",
+  crew: true,
+  image: "",
+ instagram: "@layla",
+  location: "nyc",
+  website: "laylafilms.com",
+  skill_ids: [4,1,7]
+},
+{
+  full_name: "Pedro Allen",
+  username: "pedrallen",
+  email: "pedrallen@films.com",
+  password: "password",
+  password_confirmation: "password",
+  crew: true,
+  image: "",
+ instagram: "@pedrallen",
+  location: "nyc",
+  website: "pedrallenfilms.com",
+  skill_ids: [9,3,4]
+},
+{
+  full_name: "Mary Lee Hacke",
+  username: "marylee",
+  email: "marylee@films.com",
+  password: "password",
+  password_confirmation: "password",
+  crew: true,
+  image: "",
+ instagram: "@marylee",
+  location: "nyc",
+  website: "maryleefilms.com",
+  skill_ids: [9,3,4]
+},
+{
+  full_name: "Woody Alien",
+  username: "woodyalien",
+  email: "woodyalien@films.com",
   password: "password",
   password_confirmation: "password",
   crew: false,
   image: "",
- instagram: "@gilirilili",
-  location: "london",
-  website: "gi-a.xyz",
+ instagram: "@woodyalien",
+  location: "NYC",
+  website: "alienfilms.com",
   skill_ids: [3,4,5]
 }])
 
@@ -118,6 +200,18 @@ Producer may use and authorize others to use all or parts of the Recordings.  Pr
 ])
 
 Mubee.create!([{
+  title: "Christmas tree animated illustration",
+  deadline: "2016-01-08",
+  crew: users[1],
+  producer: users[3],
+  accepted: true,
+  location: "Berlin",
+  brief: "Christmas tree illustration and animation - .gif ",
+  budget: 500,
+  contract: contracts[1]
+  # lat: ,
+  # long:
+},{
   title: "London from Tower Bridge panoramic",
   deadline: "2017-01-08",
   crew: users[0],
@@ -132,8 +226,8 @@ Mubee.create!([{
 },{
   title: "Heli Shot",
   deadline: "2017-05-11",
-  crew: users[0],
-  producer: users[1],
+  crew: users[1],
+  producer: users[0],
   accepted: true,
   location: "Iceland",
   brief: "heli/drone shot of Reykjavik, duration 00:02:00",
