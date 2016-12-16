@@ -25,10 +25,10 @@ end
       current_user.stripe_id = @customer.id
 
       current_user.save
-      render json: true
+      render json: @customer
+    else
+      render json: false
     end
-
-    render json: false
 
     # charge = Stripe::Charge.create(
     #   :customer    => customer.id,
