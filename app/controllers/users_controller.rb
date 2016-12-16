@@ -12,9 +12,9 @@ class UsersController < ApplicationController
         # calculate bounding box for query.
         distance = 20
         box = Geocoder::Calculations.bounding_box(center_point, distance)
-        @users = User.includes(:skills).where(skills: { id: params[:skill_ids] }, crew: true).within_bounding_box(box)
+        @users = User.includes(:skills).where(skills: { id: params[:skill_ids] }, crew: true).where.not(id: current_user.id).within_bounding_box(box)
       else
-        @users = User.includes(:skills).where(skills: { id: params[:skill_ids] }, crew: true)
+        @users = User.includes(:skills).where.not(id: current_user.id).where(skills: { id: params[:skill_ids] }, crew: true)
       end
     # else
     #   @users = User.includes(:reviews).where (received_reviews: { id: params [:received_reviews]}, crew: true)

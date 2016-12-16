@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     resources :mubees
     resources :skills
     resources :contracts, only: [:index, :show]
-    resources :charges
-
+    resources :charges, only: [:create, :index]
 
     get 'dashboard', to: 'dashboard#index'
     post 'register', to: 'auth#register'
